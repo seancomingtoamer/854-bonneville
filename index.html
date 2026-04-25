@@ -307,48 +307,33 @@
       margin-top: 6px;
     }
 
-    /* ============ ABOUT ============ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: clamp(32px, 6vw, 80px);
-      align-items: start;
+    /* ============ ABOUT (centered editorial block) ============ */
+    .about-centered {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
     }
-    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
-    .about-copy { position: sticky; top: 100px; }
-    @media (max-width: 900px) { .about-copy { position: static; } }
-    .about-copy h2 { margin-top: 16px; margin-bottom: 24px; }
+    .about-centered h2 {
+      margin-top: 18px;
+      margin-bottom: 28px;
+    }
+    .about-centered .lede {
+      max-width: 58ch;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    .about-centered .lede + .lede { margin-top: 1em; }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    /* Hairline ornament between headline and body */
+    .rule {
+      width: 56px;
+      height: 1px;
+      background: var(--ink);
+      margin: 0 auto clamp(28px, 3vh, 40px);
+      opacity: 0.35;
     }
-    .photo {
-      position: relative;
-      border-radius: 3px;
-      overflow: hidden;
-      background: var(--cream-soft);
-      /* TODO: replace with actual photo — <img src="..." alt="..."> */
-    }
-    .photo::after {
-      content: attr(data-label);
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      font-family: var(--sans);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      color: rgba(31, 27, 22, 0.55);
-      text-transform: uppercase;
-    }
-    .photo.a { aspect-ratio: 4/5; background: linear-gradient(135deg, #D4C4A8 0%, #A8906B 100%); margin-top: 40px; }
-    .photo.b { aspect-ratio: 4/5; background: linear-gradient(135deg, #BFA98A 0%, #8A7457 100%); }
-    .photo.c { aspect-ratio: 1/1; background: linear-gradient(135deg, #CDBCA0 0%, #9E8968 100%); }
-    .photo.d { aspect-ratio: 1/1; background: linear-gradient(135deg, #B49D7F 0%, #7A6448 100%); margin-top: -40px; }
-    @media (max-width: 900px) {
-      .photo.a, .photo.d { margin-top: 0; }
-    }
+    .rule-light { background: var(--cream); opacity: 0.4; }
 
     /* ============ INCLUDED ============ */
     .section-header {
@@ -409,44 +394,30 @@
     .step h3 { margin-bottom: 10px; }
     .step p { color: var(--muted); font-size: 15px; margin: 0; }
 
-    /* ============ HOSTS ============ */
+    /* ============ HOSTS (centered editorial block) ============ */
     .hosts {
       background: var(--ink);
       color: var(--cream);
     }
-    .hosts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: clamp(32px, 6vw, 80px);
-      align-items: center;
+    .hosts-centered {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
     }
-    @media (max-width: 800px) { .hosts-grid { grid-template-columns: 1fr; } }
-    .host-portrait {
-      aspect-ratio: 1/1;
-      border-radius: 3px;
-      background: linear-gradient(135deg, #6B5D47 0%, #3D3325 100%);
-      position: relative;
-      overflow: hidden;
-      /* TODO: replace with actual portrait — <img src="..." alt="Sean and Britt"> */
+    .hosts h2 { margin-top: 18px; margin-bottom: 28px; }
+    .hosts .lede {
+      color: rgba(245, 239, 228, 0.75);
+      max-width: 58ch;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
     }
-    .host-portrait::after {
-      content: "HOSTS PORTRAIT";
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: rgba(245, 239, 228, 0.5);
-      text-transform: uppercase;
-    }
-    .hosts h2 { margin-top: 14px; margin-bottom: 24px; }
-    .hosts .lede { color: rgba(245, 239, 228, 0.75); max-width: 52ch; }
+    .hosts .lede + .lede { margin-top: 1em; }
     .host-signature {
       font-family: var(--serif);
       font-style: italic;
-      font-size: 22px;
-      margin-top: 28px;
+      font-size: clamp(22px, 1.8vw, 26px);
+      margin-top: clamp(36px, 4vh, 52px);
       color: var(--cream);
     }
 
@@ -708,29 +679,20 @@
   <!-- ==================== ABOUT ==================== -->
   <section id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-copy">
-          <span class="eyebrow fade-up">The Home</span>
-          <h2 class="fade-up">A home, <em>not</em> a hallway.</h2>
-          <p class="lede fade-up">
-            854 Bonneville was restored with the kind of small decisions that
-            make a place feel lived-in — hardwood floors, real plants, kitchen
-            tools that work, soft light. Private bedrooms, shared common areas,
-            and quiet enough to hear yourself think.
-          </p>
-          <p class="lede fade-up">
-            Rooms are furnished and ready. Everything you'd expect from a
-            well-run home, without the hassle of a traditional lease.
-          </p>
-        </div>
-
-        <div class="gallery">
-          <!-- TODO: replace each .photo div with <img src="..." alt="..."> -->
-          <div class="photo a fade-up" data-label="BEDROOM"></div>
-          <div class="photo b fade-up" data-label="KITCHEN"></div>
-          <div class="photo c fade-up" data-label="LIVING"></div>
-          <div class="photo d fade-up" data-label="BATH"></div>
-        </div>
+      <div class="about-centered">
+        <span class="eyebrow fade-up">The Home</span>
+        <h2 class="fade-up">A home, <em>not</em> a hallway.</h2>
+        <div class="rule fade-up" aria-hidden="true"></div>
+        <p class="lede fade-up">
+          854 Bonneville was restored with the kind of small decisions that
+          make a place feel lived-in — hardwood floors, real plants, kitchen
+          tools that work, soft light. Private bedrooms, shared common areas,
+          and quiet enough to hear yourself think.
+        </p>
+        <p class="lede fade-up">
+          Rooms are furnished and ready. Everything you'd expect from a
+          well-run home, <em>without the hassle</em> of a traditional lease.
+        </p>
       </div>
     </div>
   </section>
@@ -846,25 +808,21 @@
   <!-- ==================== HOSTS ==================== -->
   <section class="hosts">
     <div class="container">
-      <div class="hosts-grid">
-        <!-- TODO: replace .host-portrait div with <img src="..." alt="Sean and Britt"> -->
-        <div class="host-portrait fade-up"></div>
-
-        <div>
-          <span class="eyebrow on-dark fade-up">Your Hosts</span>
-          <h2 class="fade-up">Sean &amp; Britt.<br><em>Right down the road.</em></h2>
-          <p class="lede fade-up">
-            We run a small portfolio of co-living homes in Atlanta. We're not a
-            faceless property manager — we answer our texts, we fix things fast,
-            and we actually care that the house feels like somewhere you'd want
-            to come back to at the end of the day.
-          </p>
-          <p class="lede fade-up">
-            If something breaks, you'll hear from a human within the hour.
-            If you need anything, you'll know who to ask.
-          </p>
-          <div class="host-signature fade-up">— Sean &amp; Britt</div>
-        </div>
+      <div class="hosts-centered">
+        <span class="eyebrow on-dark fade-up">Your Hosts</span>
+        <h2 class="fade-up">Sean &amp; Britt.<br><em>Right down the road.</em></h2>
+        <div class="rule rule-light fade-up" aria-hidden="true"></div>
+        <p class="lede fade-up">
+          We run a small portfolio of co-living homes in Atlanta. We're not a
+          faceless property manager — we answer our texts, we fix things fast,
+          and we actually care that the house feels like somewhere you'd want
+          to come back to at the end of the day.
+        </p>
+        <p class="lede fade-up">
+          If something breaks, you'll hear from a human within the hour.
+          If you need anything, you'll know who to ask.
+        </p>
+        <div class="host-signature fade-up">— Sean &amp; Britt</div>
       </div>
     </div>
   </section>
