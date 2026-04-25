@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Dependencies (in case someone adds a build step later)
 node_modules/
+.vercel
