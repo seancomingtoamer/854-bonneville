@@ -234,19 +234,15 @@
       aspect-ratio: 4 / 5;
       border-radius: 4px;
       overflow: hidden;
-      background: linear-gradient(135deg, #C9B79A 0%, #8A7457 100%);
-      /* TODO: replace with actual photo — <img src="..." alt="..."> */
+      background: var(--cream-soft);
     }
-    .hero-media::after {
-      content: "HERO PHOTO";
+    .hero-photo {
       position: absolute;
-      top: 16px;
-      left: 16px;
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: rgba(255,255,255,0.7);
-      text-transform: uppercase;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
     }
     .location-badge {
       position: absolute;
@@ -665,8 +661,9 @@
           </div>
         </div>
 
-        <!-- TODO: replace hero-media div with <img src="..." alt="..."> -->
-        <div class="hero-media fade-up" aria-label="Photo of the home">
+        <div class="hero-media fade-up">
+          <img class="hero-photo" src="images/exterior.jpg"
+               alt="Front exterior of 854 Bonneville — light gray ranch home with red front door, mature pines behind">
           <div class="location-badge">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/>
@@ -732,7 +729,7 @@
           <div class="photo a fade-up" data-label="BEDROOM"></div>
           <div class="photo b fade-up" data-label="KITCHEN"></div>
           <div class="photo c fade-up" data-label="LIVING"></div>
-          <div class="photo d fade-up" data-label="EXTERIOR"></div>
+          <div class="photo d fade-up" data-label="PORCH"></div>
         </div>
       </div>
     </div>
