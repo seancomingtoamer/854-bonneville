@@ -1,19 +1,28 @@
 # 854 Bonneville
 
-A single-page marketing site for **854 Bonneville** — a private room opening up
-at our PadSplit co-living home in Atlanta. Every CTA routes visitors to the
+A single-page marketing site for **854 Bonneville** — a private room at our
+PadSplit co-living home in Atlanta. Every CTA routes visitors to the
 PadSplit referral sign-up.
 
 Plain HTML/CSS/JS. No framework, no build step, no dependencies.
 
+## Live
+
+- **Site:** <https://854bonneville.com> (also `www.854bonneville.com`)
+- **Repo:** <https://github.com/seancomingtoamer/854-bonneville>
+- **Vercel project:** `854-bonneville` (scope: `questfilmandmedia-6960s-projects`)
+- **DNS:** GoDaddy → A `@` → `76.76.21.21`, CNAME `www` → `cname.vercel-dns.com`
+- **SSL:** Let's Encrypt, auto-renewed by Vercel
+
 ## Stack
-- `index.html` — the whole site (markup + styles + minimal JS)
+
+- `index.html` — markup, styles, minimal JS, all in one file
+- `images/room.jpg` — the hero photo (only photo on the page)
 - Google Fonts: Fraunces (display serif) + Work Sans (body sans)
 - Inline SVG icons, CSS grain overlay
-- `IntersectionObserver` for fade-up animations
+- `IntersectionObserver` for fade-up animations on scroll
 
 ## Run locally
-From this directory:
 
 ```bash
 python3 -m http.server 5500
@@ -21,42 +30,37 @@ python3 -m http.server 5500
 
 Then open <http://localhost:5500>.
 
-Any other static server works too — e.g. `npx serve .` or
-`php -S localhost:5500`.
+## Redeploy
 
-## Deploy to Vercel
-Because this is a static site with no framework, the simplest path is:
-
-1. Push this repo to GitHub (e.g. `gh repo create 854-bonneville --public --source=. --push`)
-2. At <https://vercel.com/new>, import the repo
-3. Framework preset: **Other** — leave build command empty, output directory `.`
-4. Click **Deploy**
-
-Or from the CLI (no GitHub required):
+The Vercel project is linked via local CLI. From this directory:
 
 ```bash
-npm i -g vercel   # once
-vercel            # preview deploy
-vercel --prod     # promote to production
+vercel --yes --prod --scope questfilmandmedia-6960s-projects
 ```
 
-## Swapping in real photos
-Every placeholder is marked with an HTML comment like:
+A `git push` does not auto-deploy yet — that link in the Vercel UI is
+still TODO.
+
+## Editing content
+
+Every value that needs real-world content is flagged with an HTML comment:
 
 ```html
-<!-- TODO: replace with actual photo — <img src="..." alt="..."> -->
+<!-- TODO: replace with actual rate -->
 ```
 
-Search the file for `TODO:` to find every spot that needs real content —
-photos, weekly rate, commute times, address details.
+`grep -n "TODO:" index.html` from this directory shows everything still
+stubbed. Currently:
 
-## Content TODOs currently flagged
-- Weekly rate (`$XXX / week`)
-- Neighborhood commute minutes (grocery, downtown, transit)
-- Full address details (footer + hero location badge)
-- Hero photo, 4 gallery photos, hosts portrait
+- Weekly rate (`$XXX / week`) in the hero stats bar
+- Three neighborhood commute times (grocery, downtown, transit)
+- Neighborhood / zip in the hero location badge
+- Full address details in the footer
+
+The hero photo, gallery, and hosts portrait have all been removed —
+this is now a single-photo, type-led editorial layout.
 
 ## Referral link
+
 Every CTA opens the PadSplit referral link in a new tab. The URL lives in
-`index.html` — search for `referralCode=F250E0F1` to find all instances if
-you ever need to update it.
+`index.html` — search for `referralCode=F250E0F1` to find all five instances.
