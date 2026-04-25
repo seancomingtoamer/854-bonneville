@@ -32,14 +32,14 @@ Then open <http://localhost:5500>.
 
 ## Redeploy
 
-The Vercel project is linked via local CLI. From this directory:
+GitHub → Vercel auto-deploy is wired. Every `git push` to `master`
+triggers a production build automatically (~10–20 seconds).
+
+To deploy manually from CLI without a push:
 
 ```bash
 vercel --yes --prod --scope questfilmandmedia-6960s-projects
 ```
-
-A `git push` does not auto-deploy yet — that link in the Vercel UI is
-still TODO.
 
 ## Editing content
 
